@@ -165,7 +165,7 @@ SpriteRenderer:
   m_Size: {x: 0.75, y: 0.1875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &5566272390759279778
@@ -297,7 +297,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 8662050342368401228}
   moveSpeed: 2
+  shouldChasePlayer: 0
   rangeToChasePlayer: 3
+  shouldRunAway: 0
+  runAwayRange: 0
+  shouldWander: 0
+  wanderLength: 0
+  pauseLength: 0
+  shouldPatrol: 0
+  patrolPoints: []
+  shouldShoot: 1
+  bullet: {fileID: 581495776130108917, guid: 67ea18784b87b19498819623ccc9b077, type: 3}
+  firePoint: {fileID: 4047859302142847907}
+  fireRate: 1
+  shootRange: 4
+  theBody: {fileID: 2036457144041950610}
   anim: {fileID: 3448981413859281578}
   health: 200
   deathSplatters:
@@ -306,12 +320,13 @@ MonoBehaviour:
   - {fileID: 1265294668694963006, guid: a81873a56320c374890ec7f821d97b20, type: 3}
   - {fileID: 3665339698900612221, guid: 33aee5eacf2fccd4a936eda456bbbb80, type: 3}
   hitEffect: {fileID: 7033159075231934908, guid: 70a06ee51af33ee4d8a29c44059e6811, type: 3}
-  shouldShoot: 1
-  bullet: {fileID: 581495776130108917, guid: 67ea18784b87b19498819623ccc9b077, type: 3}
-  firePoint: {fileID: 4047859302142847907}
-  fireRate: 1
-  shootRange: 4
-  theBody: {fileID: 2036457144041950610}
+  shouldDropItem: 1
+  itemsToDrop:
+  - {fileID: 7991990061450132882, guid: 41d89143e7031ce49830760c4f2b6233, type: 3}
+  - {fileID: 2097321684977585762, guid: 0638e7ad6dbae7443b31934a3b47d723, type: 3}
+  - {fileID: 7991990061450132882, guid: 41d89143e7031ce49830760c4f2b6233, type: 3}
+  - {fileID: 7991990061450132882, guid: 41d89143e7031ce49830760c4f2b6233, type: 3}
+  itemDropPercent: 25
 --- !u!50 &8662050342368401228
 Rigidbody2D:
   serializedVersion: 4

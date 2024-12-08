@@ -153,18 +153,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 3140581679754217934}
   moveSpeed: 2
+  shouldChasePlayer: 0
   rangeToChasePlayer: 3
-  anim: {fileID: 8352884187999515845}
-  health: 500
-  deathSplatters:
-  - {fileID: 100223110797538604, guid: 08894493401ea0a4580ee7b8040364e7, type: 3}
-  hitEffect: {fileID: 7033159075231934908, guid: 70a06ee51af33ee4d8a29c44059e6811, type: 3}
+  shouldRunAway: 0
+  runAwayRange: 0
+  shouldWander: 0
+  wanderLength: 0
+  pauseLength: 0
+  shouldPatrol: 0
+  patrolPoints: []
   shouldShoot: 1
   bullet: {fileID: 7071081822282942707, guid: 03e9a0634bbac3949a2c7fcb78f0d871, type: 3}
   firePoint: {fileID: 4894369595657000948}
   fireRate: 1
   shootRange: 4
   theBody: {fileID: 3294610385996747743}
+  anim: {fileID: 8352884187999515845}
+  health: 500
+  deathSplatters:
+  - {fileID: 100223110797538604, guid: 08894493401ea0a4580ee7b8040364e7, type: 3}
+  hitEffect: {fileID: 7033159075231934908, guid: 70a06ee51af33ee4d8a29c44059e6811, type: 3}
+  shouldDropItem: 1
+  itemsToDrop:
+  - {fileID: 7991990061450132882, guid: 41d89143e7031ce49830760c4f2b6233, type: 3}
+  - {fileID: 2097321684977585762, guid: 0638e7ad6dbae7443b31934a3b47d723, type: 3}
+  - {fileID: 7991990061450132882, guid: 41d89143e7031ce49830760c4f2b6233, type: 3}
+  - {fileID: 7991990061450132882, guid: 41d89143e7031ce49830760c4f2b6233, type: 3}
+  itemDropPercent: 25
 --- !u!1 &2596727691249325593
 GameObject:
   m_ObjectHideFlags: 0

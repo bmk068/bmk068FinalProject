@@ -16,16 +16,16 @@ public class PlayerController : MonoBehaviour
     public Transform gunArm;
 
     [Header("Animation")]
-    private Camera theCam;
+    // private Camera cam;
     public Animator anim;
+//
+    // [Header("Bullet")]
+    // public GameObject bulletToFire;
+    // public Transform firePoint;
 
-    [Header("Bullet")]
-    public GameObject bulletToFire;
-    public Transform firePoint;
-
-    public float timeBetweenShots;
-    private float shotCounter;
-
+    // public float timeBetweenShots;
+    // private float shotCounter;
+//
     public SpriteRenderer bodySR;
 
     [Header("Dash")]
@@ -38,17 +38,29 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public bool canMove = true;
 
+    [Header("Guns")]
+    public List<Gun> availableGuns = new List<Gun>();
+    [HideInInspector]
+    public int currentGun;
+
     private void Awake()
     {
         instance = this;
 
-        activeMoveSpeed = moveSpeed;
+        DontDestroyOnLoad(gameObject);
+
+        // activeMoveSpeed = moveSpeed;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        theCam = Camera.main;
+        // cam = Camera.main;
+
+        activeMoveSpeed = moveSpeed;
+        UIController.instance.currentGun.sprite = availableGuns[currentGun].gunUI;
+        UIController.instance.gunText.text = availableGuns[currentGun].waeponName;
+
     }
 
     // Update is called once per frame
@@ -65,35 +77,51 @@ public class PlayerController : MonoBehaviour
             rb.velocity = moveInput * activeMoveSpeed;
 
             Vector3 mousePos = Input.mousePosition;
-            Vector3 screenPoint = theCam.WorldToScreenPoint(transform.localPosition);
+            Vector3 screenPoint = CameraController.instance.mainCamera.WorldToScreenPoint(transform.localPosition);
 
             if(mousePos.x < screenPoint.x){
                 transform.localScale = new Vector3(-1f, 1f, 1f);
-                gunArm.localScale = new Vector3(-.5f, .5f, .5f);
+                gunArm.localScale = new Vector3(-1f, 1f, 1f);
+                // gunArm.localScale = new Vector3(-1f,-1f,1f);
             } else{
                 transform.localScale = Vector3.one;
-                gunArm.localScale = new Vector3(.5f, .5f, .5f);
+                gunArm.localScale = new Vector3(1f, 1f, 1f);
             }
 
             //rotate gunArm
             Vector2 offset = new Vector2(mousePos.x - screenPoint.x, mousePos.y - screenPoint.y);
             float angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
             gunArm.rotation = Quaternion.Euler(0,0,angle);
+//
+            // if(Input.GetMouseButtonDown(0)){
+            //     Instantiate(bulletToFire, firePoint.position, firePoint.rotation);
+            //     shotCounter = timeBetweenShots;
+            //     AudioManager.instance.PlaySFX(12);
 
-            if(Input.GetMouseButtonDown(0)){
-                Instantiate(bulletToFire, firePoint.position, firePoint.rotation);
-                shotCounter = timeBetweenShots;
-                AudioManager.instance.PlaySFX(12);
+            // }
 
-            }
+            // if(Input.GetMouseButton(0)){
+            //     shotCounter -= Time.deltaTime;
 
-            if(Input.GetMouseButton(0)){
-                shotCounter -= Time.deltaTime;
+            //     if(shotCounter <= 0){
+            //         Instantiate(bulletToFire, firePoint.position, firePoint.rotation);
+            //         AudioManager.instance.PlaySFX(12);
+            //         shotCounter = timeBetweenShots;
+            //     }
+            // }
+//
 
-                if(shotCounter <= 0){
-                    Instantiate(bulletToFire, firePoint.position, firePoint.rotation);
-                    AudioManager.instance.PlaySFX(12);
-                    shotCounter = timeBetweenShots;
+            if (Input.GetKeyDown(KeyCode.Tab)){
+                if (availableGuns.Count > 0){
+                    currentGun++;
+
+                    if (currentGun >= availableGuns.Count){
+                        currentGun = 0;
+                    }
+
+                    SwitchGun();
+                } else {
+                    Debug.LogError("Player has no guns! And I am very tired.");
                 }
             }
 
@@ -133,5 +161,16 @@ public class PlayerController : MonoBehaviour
             rb.velocity = Vector2.zero;
             anim.SetBool("isMoving", false);
         }
+    }
+
+    public void SwitchGun(){
+        foreach(Gun gun in availableGuns){
+            gun.gameObject.SetActive(false);
+        }
+
+        availableGuns[currentGun].gameObject.SetActive(true);
+
+        UIController.instance.currentGun.sprite = availableGuns[currentGun].gunUI;
+        UIController.instance.gunText.text = availableGuns[currentGun].waeponName;
     }
 }

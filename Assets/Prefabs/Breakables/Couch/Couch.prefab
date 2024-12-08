@@ -154,8 +154,16 @@ MonoBehaviour:
   maxPieces: 5
   shouldDropItem: 1
   itemsToDrop:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 7991990061450132882, guid: 41d89143e7031ce49830760c4f2b6233, type: 3}
+  - {fileID: 5491559360887117186, guid: 6858e475a4046b74eb9dc1e2bc2e9b60, type: 3}
+  - {fileID: 3946977644979941196, guid: 77470b567150f1e4896f53cc43c6bfcb, type: 3}
+  - {fileID: 7991990061450132882, guid: 41d89143e7031ce49830760c4f2b6233, type: 3}
+  - {fileID: 7991990061450132882, guid: 41d89143e7031ce49830760c4f2b6233, type: 3}
+  - {fileID: 3946977644979941196, guid: 77470b567150f1e4896f53cc43c6bfcb, type: 3}
+  - {fileID: 2097321684977585762, guid: 0638e7ad6dbae7443b31934a3b47d723, type: 3}
+  - {fileID: 2097321684977585762, guid: 0638e7ad6dbae7443b31934a3b47d723, type: 3}
+  - {fileID: 3946977644979941196, guid: 77470b567150f1e4896f53cc43c6bfcb, type: 3}
+  - {fileID: 7991990061450132882, guid: 41d89143e7031ce49830760c4f2b6233, type: 3}
   itemDropPercent: 40
   breakSound: 0
 --- !u!114 &2075878732102336908

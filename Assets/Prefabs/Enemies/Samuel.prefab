@@ -154,8 +154,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1953447487
+  m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 1a7532bee8b0b624db689e2e42cf3fbc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -297,7 +297,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 943981280124258824}
   moveSpeed: 2
+  shouldChasePlayer: 0
   rangeToChasePlayer: 3
+  shouldRunAway: 0
+  runAwayRange: 0
+  shouldWander: 0
+  wanderLength: 0
+  pauseLength: 0
+  shouldPatrol: 0
+  patrolPoints: []
+  shouldShoot: 1
+  bullet: {fileID: 5194187942796399268, guid: 736ffa1f9388192448f40a4fef6013fd, type: 3}
+  firePoint: {fileID: 7195335466277466736}
+  fireRate: 1
+  shootRange: 4
+  theBody: {fileID: 6823103706808253554}
   anim: {fileID: 2186507246197772057}
   health: 200
   deathSplatters:
@@ -306,12 +320,13 @@ MonoBehaviour:
   - {fileID: 3665339698900612221, guid: 33aee5eacf2fccd4a936eda456bbbb80, type: 3}
   - {fileID: 4892627034570836834, guid: fa257b6fc8a613f4f9571341f5b12882, type: 3}
   hitEffect: {fileID: 7033159075231934908, guid: 70a06ee51af33ee4d8a29c44059e6811, type: 3}
-  shouldShoot: 1
-  bullet: {fileID: 5194187942796399268, guid: 736ffa1f9388192448f40a4fef6013fd, type: 3}
-  firePoint: {fileID: 0}
-  fireRate: 1
-  shootRange: 4
-  theBody: {fileID: 6823103706808253554}
+  shouldDropItem: 1
+  itemsToDrop:
+  - {fileID: 7991990061450132882, guid: 41d89143e7031ce49830760c4f2b6233, type: 3}
+  - {fileID: 2097321684977585762, guid: 0638e7ad6dbae7443b31934a3b47d723, type: 3}
+  - {fileID: 7991990061450132882, guid: 41d89143e7031ce49830760c4f2b6233, type: 3}
+  - {fileID: 7991990061450132882, guid: 41d89143e7031ce49830760c4f2b6233, type: 3}
+  itemDropPercent: 30
 --- !u!50 &943981280124258824
 Rigidbody2D:
   serializedVersion: 4
@@ -441,6 +456,6 @@ SpriteRenderer:
   m_Size: {x: 0.75, y: 0.1875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

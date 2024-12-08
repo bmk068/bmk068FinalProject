@@ -11,7 +11,7 @@ public class UIController : MonoBehaviour
     public static UIController instance;
 
     public Slider healthSlider;
-    public TextMeshProUGUI healthText;
+    public TextMeshProUGUI healthText, coinText;
 
     public GameObject deathScreen;
 
@@ -20,7 +20,10 @@ public class UIController : MonoBehaviour
     private bool fadeToBlack, fadeOutBlack;
 
     public string newGameScene, mainMenuScene;
-    public GameObject pauseMenu;
+    public GameObject pauseMenu, mapDisplay, bigMapText;
+
+    public Image currentGun;
+    public Text gunText;
 
     private void Awake()
     {
@@ -32,6 +35,9 @@ public class UIController : MonoBehaviour
     {
         fadeOutBlack = true;
         fadeToBlack = false;
+
+        currentGun.sprite = PlayerController.instance.availableGuns[PlayerController.instance.currentGun].gunUI;
+        gunText.text = PlayerController.instance.availableGuns[PlayerController.instance.currentGun].waeponName;
     }
 
     // Update is called once per frame
